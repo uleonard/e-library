@@ -9,19 +9,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
-		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" />
+		<link rel="stylesheet" href="{{asset('assets/font-awesome/4.5.0/css/font-awesome.min.css')}}" />
 
 		<!-- text fonts -->
-		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
+		<link rel="stylesheet" href="{{asset('assets/css/fonts.googleapis.com.css')}}" />
 
 		<!-- ace styles -->
-		<link rel="stylesheet" href="assets/css/ace.min.css" />
+		<link rel="stylesheet" href="{{asset('assets/css/ace.min.css')}}" />
 
 		<!--[if lte IE 9]>
 			<link rel="stylesheet" href="assets/css/ace-part2.min.css" />
 		<![endif]-->
-		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="{{asset('assets/css/ace-rtl.min.css')}}") />
 
 		<!--[if lte IE 9]>
 		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
@@ -66,20 +66,28 @@
 									<div class="widget-body">
 										<div class="widget-main">
 											<h4 style="margin-top: 50px;"  class="header blue lighter bigger">
-												Please Enter Your Information
-											</h4>
+												Enter details for new user											</h4>
 
 											<div class="space-6"></div>
 
-											<form action="/login" method="POST">
+											<form action="/users/store" method="POST">
 												@csrf
 												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="form-control" placeholder="name" name="name" />
+															<i class="ace-icon fa fa-user"></i>
+														</span>
+													</label>
+													
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="text" class="form-control" placeholder="Username" name="username" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
+													
+													
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
@@ -87,7 +95,16 @@
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
-
+													
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<select class="form-control" name="role_id">
+																<option value="1">Library Director</option>
+																<option value="2">Library Staff</option>
+															</select>
+														</span>
+													</label>
+													
 													<div class="space"></div>
 
 													<div class="clearfix">
@@ -135,7 +152,7 @@
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
-		<script src="assets/js/jquery-2.1.4.min.js"></script>
+		<script src="{{asset('assets/js/jquery-2.1.4.min.js')}}"></script>
 
 		<!-- <![endif]-->
 

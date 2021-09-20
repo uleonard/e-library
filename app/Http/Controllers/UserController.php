@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
-
-use App\Models\Book;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Hash;
+use Session;
 
-class BookController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = DB::table('books')->get();
-
-        return view('books.index', ['rows' => $books]);
+        
     }
 
     /**
@@ -28,19 +26,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        /*
-            VALIDATE FORM DATA FIRST
-        */
-
-        $bk = new Book;
-        $bk->title = "Title sample here";
-        $bk->isbn = "ISBN-13324";
-        $bk->edition = "2nd";
-        $bk->year_published = 2015;
-        $bk->author = "Author name here";
-        $bk->save();
-
-        return redirect('books');
+        return view('users.add');
     }
 
     /**
@@ -51,16 +37,36 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*
+        $data = [
+            'name'=>'Main Admin',
+            'username'=>'admin',
+            'password'=>'admin',
+            'role_id'=>1
+        ];
+        */
+        $data = $request->validate([
+            'name' => ['required'],
+            'username' => ['required'],
+            'password' => ['required'],
+            'role_id' => ['required'],
+        ]);
+
+        User::create([
+            'name' => $data['name'],
+            'username' => $data['username'],
+            'password' => Hash::make($data['password']),
+            'role_id' => $data['role_id'],
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show(User $user)
     {
         //
     }
@@ -68,10 +74,10 @@ class BookController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit(User $user)
     {
         //
     }
@@ -80,10 +86,10 @@ class BookController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -91,10 +97,10 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy(User $user)
     {
         //
     }

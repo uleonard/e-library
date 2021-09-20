@@ -1,8 +1,11 @@
 <?php
+namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\BookController;
+//use App\Http\Controllers\BookController;
+//use App\Http\Controllers\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +23,19 @@ Route::get('/', function () {
 });
 
 Route::get('/books', [BookController::class, 'index']);
+Route::get('/books/create', [BookController::class, 'create']);
+
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/create', [UserController::class, 'create']);
+Route::post('/users/store', [UserController::class, 'store']);
+
+
+
+/*
+|--------------------------------------------------------------
+| Login Routes
+|--------------------------------------------------------------
+*/
+Route::post('/login', [LoginController::class, 'authenticate']);
+//Route::post('login', 'LoginController@authenticate');
+//Route::post('logout', 'LoginController@logout')->name('logout');

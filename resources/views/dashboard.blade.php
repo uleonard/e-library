@@ -47,77 +47,9 @@
 							</div>
 
 							<!--<div class="space-6"></div> -->
-							
-							
-								
-					
-                                @if ($errors->has('message'))
-                                    <div class="alert alert-success" role="alert">
-                                        <strong>{{ $errors->first('message') }}</strong>
-                                    </div>
-                                @endif
-                      
-						
-						
-						
-							
+
 							<div class="position-relative">
-								<div id="login-box" class="login-box visible widget-box no-border">
-									<div class="widget-body">
-										<div class="widget-main">
-											<h4 style="margin-top: 50px;"  class="header blue lighter bigger">
-												Please Enter Your Information
-											</h4>
-
-											<div class="space-6"></div>
-
-											<form action="/login" method="POST">
-												@csrf
-												<fieldset>
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" name="username" />
-															<i class="ace-icon fa fa-user"></i>
-														</span>
-													</label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" name="password"/>
-															<i class="ace-icon fa fa-lock"></i>
-														</span>
-													</label>
-
-													<div class="space"></div>
-
-													<div class="clearfix">
-														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
-															<i class="ace-icon fa fa-key"></i>
-															<span class="bigger-110">Login</span>
-														</button>
-													</div>
-
-													<div class="space-4"></div>
-												</fieldset>
-											</form>
-
-											<div class="social-or-login center">
-												
-											</div>
-
-											<div class="space-6"></div>
-
-										</div><!-- /.widget-main -->
-
-										<div style="text-align: center;"class="clearfix">
-											<div style="background-color:#46bcef;height: 60px;padding-top: 20px;color: #fff;">
-												
-													&copy Mubus 2021. All rights reserved
-												
-											</div>
-										</div>
-									</div><!-- /.widget-body -->
-								</div><!-- /.login-box -->
+								DASHBOARD
 							</div><!-- /.position-relative -->
 
 							<div class="navbar-fixed-top align-right">
