@@ -22,14 +22,18 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/books', [BookController::class, 'index']);
+Route::get('/books', [BookController::class, 'index'])->name('books');
 Route::get('/books/create', [BookController::class, 'create']);
+Route::post('/books/store', [BookController::class, 'store']);
 
-Route::get('/users', [UserController::class, 'index']);
+Route::get('/users', [UserController::class, 'index'])->name('users');
 Route::get('/users/create', [UserController::class, 'create']);
 Route::post('/users/store', [UserController::class, 'store']);
+Route::get('/dashboard', [UserController::class, 'dashboard']);
 
 
+Route::get('/modules', [ModuleController::class, 'index']);
+Route::get('/modules/create', [ModuleController::class, 'create']);
 
 /*
 |--------------------------------------------------------------

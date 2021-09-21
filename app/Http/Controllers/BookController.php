@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Book;
+use App\Models\Module;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -28,19 +29,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        /*
-            VALIDATE FORM DATA FIRST
-        */
-
-        $bk = new Book;
-        $bk->title = "Title sample here";
-        $bk->isbn = "ISBN-13324";
-        $bk->edition = "2nd";
-        $bk->year_published = 2015;
-        $bk->author = "Author name here";
-        $bk->save();
-
-        return redirect('books');
+        
     }
 
     /**
@@ -51,7 +40,22 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*
+            VALIDATE FORM DATA FIRST
+        */
+        $module = Module::where('code',$request->module_id)->first(); 
+
+        $bk = new Book;
+        $bk->module_id = $module->id;
+        $bk->title = $request->title;
+        $bk->isbn = $request->isbn;
+        $bk->edition = $request->edition;
+        $bk->year_published = $request->year_published;
+        $bk->author = $request->author;
+        $bk->url = $request->url;
+        $bk->save();
+
+        return redirect('books');
     }
 
     /**
