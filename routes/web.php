@@ -22,6 +22,20 @@ Route::get('/', function () {
     return view('login');
 });
 
+/*
+Route::get('/students', function () {
+    return view('students.dashboard');
+});
+
+*/
+Route::get('students/dashboard',[StudentController::class, 'index']);
+Route::get('students/books/{id}',[StudentController::class, 'books_listing'])->name('students.books');
+
+
+Route::get('session/set',[SessionController::class, 'storeSessionData']);
+Route::get('session/remove',[SessionController::class, 'deleteSessionData']);
+
+
 Route::get('/books', [BookController::class, 'index'])->name('books');
 Route::get('/books/create', [BookController::class, 'create']);
 Route::post('/books/store', [BookController::class, 'store']);
@@ -33,6 +47,7 @@ Route::get('/dashboard', [UserController::class, 'dashboard']);
 
 
 Route::get('/modules', [ModuleController::class, 'index']);
+Route::get('/modules/ids', [ModuleController::class, 'module_ids']);
 Route::get('/modules/create', [ModuleController::class, 'create']);
 
 /*

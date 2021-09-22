@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Module;
 use App\Models\Classes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ModuleController extends Controller
 {
@@ -15,7 +16,8 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $module = new Module;
+        
+        /*$module = new Module;
         $module->code = "ECN-122";
         $module->name = "Economics 2";
         $module->year_offered = "1";
@@ -24,7 +26,7 @@ class ModuleController extends Controller
        // $module = Module::find(1);   
         $classIds = [6];
         $module->classes()->attach($classIds);
-        
+        */
 
         /*
         $class = new Classes;
@@ -32,11 +34,13 @@ class ModuleController extends Controller
         $class->name = "EH 1";
         $class->programme_id = 0;
         $class->save();
-        
-       // $module = Module::find(1);   
-        $moduleIds = [3];
-        $class->modules()->attach($moduleIds);
         */
+
+        
+        $class = Classes::find(15);   
+        $moduleIds = [5,6,18,19,24,32,35,56,57,108,109,147];
+        $class->modules()->attach($moduleIds);
+        
         
         /*
         $module = Module::find(3);
@@ -47,13 +51,43 @@ class ModuleController extends Controller
         */
 
         /*
-        $class = Classes::find(1);
+        $class = Classes::find(14);
         foreach($class->modules as $module)
         {
-            echo $module->name . "<br>";
+            echo $module->code . " : " . $module->name . "<br>";
         }
         */
         
+    }
+
+    public function module_ids()
+    {
+        $ids = Module::select("id")
+                ->whereIn('code', 
+                [
+                    "MTS-BUM-111",
+"LAN-COS-111",
+"BUS-ECN-111",
+"ACC-FIA-111",
+"BUS-OBE-111",
+"CIT-INS-111",
+"MTS-BUM-122",
+"BUS-ECN-122",
+"ACC-FIA-122",
+"CIT-ITP-121",
+"TED-PED-121",
+"LAN-COS-122"
+                ])
+                ->get();
+      
+        echo "[";
+        foreach($ids as $id)
+        {
+            echo $id->id . ",";
+        }
+        echo "]";
+       
+
     }
 
     /**
