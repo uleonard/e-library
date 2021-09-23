@@ -17,7 +17,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = DB::table('books')->get();
+        //$books = DB::table('books')->get();
+        $books = Book::get();
 
         return view('books.index', ['rows' => $books]);
     }
@@ -53,6 +54,7 @@ class BookController extends Controller
         $bk->year_published = $request->year_published;
         $bk->author = $request->author;
         $bk->url = $request->url;
+        $bk->available_in = $request->available_in;
         $bk->save();
 
         return redirect('books');

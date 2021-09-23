@@ -20,7 +20,7 @@
 									
 									<label class="inline">
 										
-										<span class="lbl"> {{$module->name}}</span>
+										<span class="lbl"> {{$module->name}} ({{$module->code}})</span>
 									</label>
 									<div class="pull-right action-buttons">
 										<a href="#" class="blue" title="Lecture Notes" data-original-title="Lecture Notes">
@@ -29,7 +29,7 @@
 
 										<span class="vbar"></span>
 
-										<a href="#" class="red" title="Past Papers" data-original-title="Past Papers">
+										<a href="{{route('students.papers',['id'=>$module->id])}}" class="red" title="Past Papers" data-original-title="Past Papers">
 											<i class="ace-icon fa fa-list bigger-130"></i>
 										</a>
 

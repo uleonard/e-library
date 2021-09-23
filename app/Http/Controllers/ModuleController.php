@@ -16,6 +16,14 @@ class ModuleController extends Controller
      */
     public function index()
     {
+        $rows = Module::get();
+
+        return view('past-papers.index', ['rows' => $rows]);
+    }
+
+    
+     public function index_sample()
+    {
         
         /*$module = new Module;
         $module->code = "ECN-122";

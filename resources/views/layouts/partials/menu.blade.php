@@ -13,12 +13,17 @@
 	</a>
 	<button class="btn btn-app btn-light btn-xs">
 		<i class="ace-icon fa fa-list bigger-160"></i>
-		<span style="font-size:11px!important">Programs</span>
+		<span style="font-size:11px!important">Papers</span>
 	</button>
-	<button class="btn btn-app btn-light btn-xs">
-		<i class="ace-icon fa fa-sitemap bigger-160"></i>
-		<span style="font-size:11px!important">Modules</span>
-	</button>
+	
+	<a href="{{route('modules')}}">
+		<button class="btn btn-app btn-light btn-xs">
+		
+			<i class="ace-icon fa fa-sitemap bigger-160"></i>
+			<span style="font-size:11px!important">Modules</span>
+		
+		</button>
+	</a>
 	<button class="btn btn-app btn-light btn-xs">
 		<i class="ace-icon fa fa-pencil bigger-160"></i>
 		<span style="font-size:11px!important">Logs</span>

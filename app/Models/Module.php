@@ -16,4 +16,19 @@ class Module extends Model
     {
         return $this->belongsToMany(Classes::class,"classes_module","module_id","class_id");
     }
+
+     /**
+     * The books that belong to the module.
+     */
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+    }
+     /**
+     * The papers that belong to the module.
+     */
+    public function papers()
+    {
+        return $this->hasMany(PastPaper::class);
+    }
 }

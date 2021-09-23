@@ -6,7 +6,7 @@
 		<div class="widget-header">
 			<h4 class="smaller">
 				{{$module->name}} ({{$module->code}})
-				<small>Books</small>
+				<small>Past Papers</small>
 			</h4>
 		</div>
 
@@ -16,18 +16,18 @@
 					<div class="row">
 						<div class="dd dd-draghandle" style="max-width:100%!important">
 							<ol class="dd-list">
-							@foreach($module->books as $row)
+							@foreach($module->papers as $row)
 								<li class="dd-item dd2-item" data-id="13">
 									<div class="dd-handle dd2-handle">
 										<i class="normal-icon ace-icon fa fa-list blue bigger-130"></i>
 					
 									</div>
 									<div class="dd2-content">
-										<span>{{$row->title}} </span>  | Author: {{$row->author}} 
+										<span>{{$row->year}} </span>  |  semester {{$row->semester}} 
 										<span class="pull-right" style="color:#83c0e5" >
-											<a href="{{$row->url}}">
-												<i class="drag-icon ace-icon fa fa-download bigger-125 pull-right"></i> |  Available in: {{$row->available_in}}
-											</a>
+											<i class="drag-icon ace-icon fa fa-download bigger-125 pull-right"></i> |  
+											<a href="{{route('pastpapers.download',['id'=>$row->id])}}">Download </a> : 
+											<a href="{{route('pastpapers.view',['id'=>$row->id])}}">View </a>
 										</span>
 									</div>
 									

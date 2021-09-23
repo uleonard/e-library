@@ -130,6 +130,19 @@
 							<input class="form-control input-mask-phone" type="text" id="form-field-mask-2" name="url">
 						</div>
 					</div>
+					<div>
+						<label for="form-field-mask-2">
+							Available in 
+							<small class="text-warning"></small>
+						</label>
+
+						<div class="input-group">
+							<span class="input-group-addon">
+								<i class="ace-icon fa fa-time"></i>
+							</span>
+							<input class="form-control input-mask-phone" type="text" id="form-field-mask-2" name="available_in" placeholder="E.g. Catalogue, PDF, URL, etc.">
+						</div>
+					</div>
 				
 				
 					
