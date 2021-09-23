@@ -42,7 +42,7 @@ class PastPaperController extends Controller
         $module = Module::find($request->module_id);
         $filename = $module->code."_year-".$request->year . "_sem-" . $request->semester . "." . $request->attachment->extension();;
         $path = $request->file('attachment')->storeAs(
-            'past-papers', $filename
+            'public/past-papers', $filename
         );
        
 
@@ -50,7 +50,7 @@ class PastPaperController extends Controller
         $paper->module_id = $request->module_id;
         $paper->year = $request->year;
         $paper->semester = $request->semester;
-        $paper->attachment = $path;
+        $paper->attachment = $filename;
         $paper->save();
 
         return Redirect('/modules');  
@@ -104,12 +104,46 @@ class PastPaperController extends Controller
     public function download($id)
     {
         $paper = PastPaper::find($id);
-        return Storage::download($paper->attachment);
+        return Storage::download('public/past-papers/'.$paper->attachment);
     }
     public function view($id)
     {
         
         $paper = PastPaper::find($id);
+
+        if(!session('class')){
+            return Redirect('/'); 
+        }
+
+        $class_found = 0;
+        foreach($paper->module->classes as $class)
+        {
+            if($class->code==session('class'))/** PLEASE RETRIEVE THE CLASS FROM SESSION */
+                $class_found = 1;
+        }
+      
+        if($class_found==0)
+            return Redirect('/students/dashboard');  
+
+
+        $file_path='public/past-papers/'.$paper->attachment;
+        if (!Storage::disk('local')->exists($file_path)) {
+            abort(404);
+        }
+       
+
+        return view('students.view-past-paper',[
+                'paper' => $paper,
+                'contents' => 'storage/past-papers/'.$paper->attachment
+                ]);
+        
+      
+    }
+    public function viewSAMPLE($id)
+    {
+        
+        
+       // $paper = PastPaper::find($id);
 /*
         $contents = Storage::get($paper->attachment);
         //echo $contents;
@@ -119,19 +153,21 @@ class PastPaperController extends Controller
         */
         
         //readfile("past-papers/".$filename);
-
+/*
         $file_path=$paper->attachment;
         if (!Storage::disk('local')->exists($file_path)) {
             abort(404);
         }
-
+*/
   //$local_path = config('filesystems.disks.local.root') . DIRECTORY_SEPARATOR . $file_path;
-        $local_path = $file_path;
+  //      $local_path = $file_path;
 
         //return response()->file($local_path);
 
-        return view('students.view-past-paper',['paper' => $paper,'contents' => $local_path]);
+       // return view('students.view-past-paper',['paper' => $paper,'contents' => $local_path]);
         
         //echo Storage::url($file_path);
+        
+        
     }
 }

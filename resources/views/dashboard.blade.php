@@ -6,6 +6,9 @@
 
 @section('content')
 	<h1>Content here</h1>
+	@foreach($rows as $row)
+		{{$row->email}} <br>;
+	@endforeach
 @endsection
 
 @section('footer')

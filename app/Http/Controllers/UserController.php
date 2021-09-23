@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Hash;
 use Session;
+use Illuminate\Support\Facades\Http;
 
 class UserController extends Controller
 {
@@ -107,6 +108,23 @@ class UserController extends Controller
 
     public function dashboard()
     {
-        return view('dashboard');
+        //$rows = Http::post('http://localhost/test/example.php');
+        /*
+        $rows = Http::post('http://localhost/test/example.php', [
+            'name' => 'Admin',
+        ]);
+        */
+        $rows = Http::retry(3,500)->post('http://masterpiecemw.com/example.php', [
+            'name' => 'Admin',
+        ]);
+            
+        //$rows = Http::get('http://localhost/test/example.php?name=Admin');
+       
+        
+        //return $response;
+       // die();
+      
+            
+        return view('dashboard',['rows'=>$rows->object()]);
     }
 }

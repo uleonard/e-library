@@ -10,8 +10,8 @@
 				</h4>
 			</div>
 			<!--==========================BOOK/NOTES/PASTPAPER FRAME=========================-->
-			<object data="{{$contents}}" style="width:100%; height:540px">
-				<embed src="{{$contents}}" style="width:100%; height:100%"> </embed>
+			<object data="{{asset($contents)}}" style="width:100%; height:540px">
+				<embed src="{{asset($contents)}}" style="width:100%; height:100%"> </embed>
 				Error: Embedded data could not be displayed.
 			</object>
 	
