@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Classes\ActivityLog;
 use Illuminate\Http\Request;
 use Hash;
 use Session;
@@ -111,20 +112,45 @@ class UserController extends Controller
         //$rows = Http::post('http://localhost/test/example.php');
         /*
         $rows = Http::post('http://localhost/test/example.php', [
-            'name' => 'Admin',
+            'username' => 'uleonard',
+            'password' => '123456',
         ]);
         */
+
+        /*
         $rows = Http::retry(3,500)->post('http://masterpiecemw.com/example.php', [
             'name' => 'Admin',
         ]);
-            
+          */  
         //$rows = Http::get('http://localhost/test/example.php?name=Admin');
        
         
         //return $response;
        // die();
       
-            
-        return view('dashboard',['rows'=>$rows->object()]);
+       //die($rows);
+
+       //session(['class'=>$rows['class']]);
+
+     /*  
+        $log_data = [
+                        'username' => session('user'),
+                        'firstname' => session('firstname'),
+                        'surname' => session('surname'),
+                        'gender' => session('gender'),
+                        'activity_type' => "VIEW",
+                        'activity_desc' => "Viewed library staff dashboard page",
+                        'user_role' => session('user_role'),
+                        'student_reg_number' => session('student_reg_number'),
+                        'class' => session('class'),
+                        'programme' => session('programme'),
+                        'department' => session('department'),
+                    ];       
+       
+        ActivityLog::log($log_data);
+        */
+          
+        //return view('dashboard',['rows'=>$rows]);
+        return view('dashboard');
     }
 }

@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Classes;
 use App\Models\Book;
 use App\Models\Module;
+
+use App\Classes\ActivityLog;
+
 use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
     public function index(Request $request)
     {
+        
         if(!$request->session()->has('class'))
          {
             return Redirect('/'); 
@@ -20,6 +24,14 @@ class StudentController extends Controller
         $class_code =  $request->session()->get('class');
         $class = Classes::where('code',$class_code)->first();
         //$class = Classes::find(14);
+
+
+        $log_data = [
+            'activity_type' => "VIEW",
+            'activity_desc' => "Viewed student dashboard page",            
+        ];  
+        
+        ActivityLog::log_student($log_data);
        
         return view('students.dashboard',['row' => $class]);
         
@@ -45,6 +57,14 @@ class StudentController extends Controller
         //$books = Book::where('module_id',$id)->get();
         if($class_found==0)
             return Redirect('/students/dashboard');  
+
+        
+            $log_data = [
+                'activity_type' => "VIEW",
+                'activity_desc' => "Viewed books listing page",            
+            ];  
+            
+            ActivityLog::log_student($log_data);
         return view('students.books-listing',['module'=>$module]);
         
         
@@ -70,6 +90,14 @@ class StudentController extends Controller
       
         if($class_found==0)
             return Redirect('/students/dashboard');  
+
+        
+            $log_data = [
+                'activity_type' => "VIEW",
+                'activity_desc' => "Viewed papers listing page",            
+            ];  
+            
+            ActivityLog::log_student($log_data);
         return view('students.past-papers-listing',['module'=>$module]);
         
         

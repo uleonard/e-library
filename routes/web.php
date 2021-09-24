@@ -57,6 +57,7 @@ Route::get('/modules/create', [ModuleController::class, 'create']);
 |--------------------------------------------------------------
 */
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/students/login', [LoginController::class, 'students_login'])->name('students.login');
 //Route::post('login', 'LoginController@authenticate');
 //Route::post('logout', 'LoginController@logout')->name('logout');
 

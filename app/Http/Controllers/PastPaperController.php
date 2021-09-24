@@ -6,6 +6,8 @@ use App\Models\PastPaper;
 use App\Models\Module;
 use Illuminate\Http\Request;
 
+use App\Classes\ActivityLog;
+
 use Illuminate\Support\Facades\Storage;
 
 class PastPaperController extends Controller
@@ -104,6 +106,15 @@ class PastPaperController extends Controller
     public function download($id)
     {
         $paper = PastPaper::find($id);
+
+        
+        $log_data = [
+            'activity_type' => "DOWNLOAD",
+            'activity_desc' => "Downloaded past paper  for " . $paper->module->name."(".$paper->module->code.")" ." year - ". $paper->year ." sem - ". $paper->semester ,            
+        ];  
+        
+        ActivityLog::log_student($log_data);
+
         return Storage::download('public/past-papers/'.$paper->attachment);
     }
     public function view($id)
@@ -130,6 +141,14 @@ class PastPaperController extends Controller
         if (!Storage::disk('local')->exists($file_path)) {
             abort(404);
         }
+
+
+        $log_data = [
+            'activity_type' => "VIEW",
+            'activity_desc' => "Viewed past paper for " . $paper->module->name."(".$paper->module->code.")" ." year - ". $paper->year ." sem - ". $paper->semester ,            
+        ];  
+        
+        ActivityLog::log_student($log_data);
        
 
         return view('students.view-past-paper',[

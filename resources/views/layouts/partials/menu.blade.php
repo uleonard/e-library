@@ -1,4 +1,4 @@
-<div class="col-xs-2" style="margin-top: 27px;border:1px solid #4baedd;padding:6px;text-align: center;width:200px">
+<div class="col-xs-2" style="margin-top: 27px;border:1px solid #4baedd;padding:6px;text-align: center;width:158px">
 	<a href="{{route('books')}}">
 		<button class="btn btn-app btn-light btn-xs">
 			<i class="ace-icon fa fa-book bigger-160"></i>
