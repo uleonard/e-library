@@ -125,7 +125,7 @@
 
 			<div class="infobox-data">
 				<div class="infobox-content">Downloads</div>
-				<div class="infobox-content">1,205</div>
+				<div class="infobox-content">{{$stat['downloads']}}</div>
 			</div>
 		</div>
 		<div class="infobox infobox-blue infobox-small infobox-dark">
@@ -220,7 +220,7 @@
 								</a>
 								&nbsp; Generic
 							</span>
-							<h4 class="bigger pull-right">1,255</h4>
+							<h4 class="bigger pull-right">{{$stat['generic']}}</h4>
 						</div>
 
 						<div class="grid3">
@@ -232,7 +232,7 @@
 								</a>
 								&nbsp; Mature
 							</span>
-							<h4 class="bigger pull-right">941</h4>
+							<h4 class="bigger pull-right">{{$stat['mature']}}</h4>
 						</div>
 
 						<div class="grid3">

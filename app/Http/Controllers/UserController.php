@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\ActivityTracking;
 use App\Classes\ActivityLog;
 use Illuminate\Http\Request;
 use Hash;
@@ -149,8 +150,19 @@ class UserController extends Controller
        
         ActivityLog::log($log_data);
         */
-          
+
         //return view('dashboard',['rows'=>$rows]);
-        return view('dashboard');
+
+        
+        $downloads = ActivityTracking::where('activity_type','DOWNLOAD')->count();
+        $generic = ActivityTracking::where('student_type','Generic')->count();
+        $mature = ActivityTracking::where('student_type','Mature')->count();
+        $stat = [
+            'downloads'=>$downloads,
+            'generic'=>$generic,
+            'mature'=>$mature,
+        ];
+        
+        return view('dashboard',['stat'=>$stat]);
     }
 }

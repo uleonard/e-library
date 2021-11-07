@@ -1,6 +1,12 @@
 @extends('layouts.students')
 
 @section('content')
+<div class="widget-header">
+	<h4 class="smaller">
+	Dashboard | 
+		<small>Welcome {{session('firstname')}}, </small>
+	</h4>
+</div>
 		<div class="col-xs-5">
 			<div class="widget-body">
 				<div class="widget-main padding-4">

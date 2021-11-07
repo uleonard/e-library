@@ -26,8 +26,8 @@
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
-									<small>Prince Kayira,</small>
-									Student
+									<small>{{ session('firstname') }} {{ session('surname') }}</small>
+									({{ session('user') }})
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>

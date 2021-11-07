@@ -9,7 +9,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
+		
 		<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" />
+		
 		<link rel="stylesheet" href="{{asset('assets/font-awesome/4.5.0/css/font-awesome.min.css')}}" />
 
 		<!-- text fonts -->
@@ -29,6 +31,11 @@
 		
 		<link rel="stylesheet" href="{{asset('assets/js/ace-extra.min.js')}}" />
 		
+		<!-- JS Libraries -->
+		<!-- Latest compiled JavaScript
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+ 		-->
+
 		@yield('css-library')
 	</head>
 
@@ -42,41 +49,7 @@
 
 			<div class="main-content">
 				<div class="main-content-inner">
-					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-						<ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Pagination</a>
-							</li>
-
-							<li>
-								<a href="#">Comes</a>
-							</li>
-							<li class="active">here</li>
-						</ul><!-- /.breadcrumb -->
-						
-							<ul class="breadcrumb pull-right" style="margin-top:1px">
-								<div class="btn-toolbar ">
-									<div class="btn-group">
-										<button class="btn btn-light"><i class="ace-icon fa fa-list icon-only bigger-110"></i> Library Catalogue</button>
-										<button class="btn btn-light"><i class="ace-icon fa fa-news icon-only bigger-110"></i> Papers</button>
-										<button class="btn btn-light"><i class="ace-icon fa fa-bookmark icon-only bigger-110"></i> Repository</button>
-										<button class="btn btn-light"><i class="ace-icon fa fa-check-square-o icon-only bigger-110"></i> Books</button>
-									</div>
-
-									<div class="btn-group btn-corner">
-										<button class="btn"><i class="ace-icon fa fa-download icon-only bigger-110"></i></button>
-										<button class="btn"><i class="ace-icon fa fa-print icon-only bigger-110"></i></button>
-										<button class="btn"><i class="ace-icon fa fa-share icon-only bigger-110"></i></button>
-									</div>
-
-									<div class="btn-group">
-										<button class="btn btn-grey"><i class="ace-icon fa fa-envelope icon-only bigger-110"></i></button>
-									</div>
-								</div>
-							</ul>
-						
-					</div>
+					
 					<div class="col-xs-12">
 						<!--========================SIDE MENU=================================-->
 						

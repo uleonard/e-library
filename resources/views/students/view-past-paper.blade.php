@@ -6,7 +6,7 @@
 			<div class="widget-header">
 				<h4 class="smaller">
 				{{$paper->module->name}} ({{$paper->module->code}})
-					<small>{{$paper->year}} | Semester {{$paper->semester}}</small>
+					<small>Past Papers | {{$paper->year}} | Semester {{$paper->semester}}</small>
 				</h4>
 			</div>
 			<!--==========================BOOK/NOTES/PASTPAPER FRAME=========================-->
